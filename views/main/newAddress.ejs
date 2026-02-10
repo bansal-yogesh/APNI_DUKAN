@@ -1,0 +1,16 @@
+<%layout("layouts/boilerplate.ejs")%>
+
+    <form action="/user/new-address?productId=<%= productId %>&quantity=<%= quantity %>" method="post">
+
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" >
+        <label for="mobileNumber">MobileNo</label>
+        <input type="text" name="mobileNumber" id="mobileNumber">
+        <label for="city">City</label>
+        <input type="text" name="city" id="city">
+        <label for="pincode"> Pincode</label>
+        <input type="text" name="pincode" id="name">
+        <label for="houseNumber">House No./Flat No.</label>
+        <textarea name="houseNumber" id="houseNumber" cols="16" rows="3"></textarea>
+        <button>ADD</button>
+    </form>

@@ -1,0 +1,36 @@
+<%layout("layouts/boilerplate.ejs")%>
+
+    <%if(req.user){%>
+
+        <%if(req.user && req.user.address.length> 0 ){%>
+
+            <form action="/product/<%=productId%>/buy" method="post">
+
+                <%for(address of req.user.address){%>
+
+                    <input type="radio" name="selectedAddress" value=<%=address._id%>>
+                    <label for="selectedAddress">
+                        <div>
+                            <%=address.name%>
+                                <%=address.mobileNumber%>
+                                    <%=address.houseNumber%>
+                                        <%=address.city%>
+                                            <%=address.pincode%>
+
+                        </div>
+                    </label>
+                    <%}%>
+                    <input type="hidden" name="quantity" value="<%=quantity%>">
+                        <button>
+                            Procede
+                        </button>
+            </form>
+
+
+
+            <%}%>
+                <a href="/user/new-address?productId=<%=productId%>&quantity=<%=quantity%>">Add New Address</a>
+
+
+
+                <%}%>

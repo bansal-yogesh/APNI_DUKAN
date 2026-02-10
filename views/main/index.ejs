@@ -1,0 +1,24 @@
+<%layout("layouts/boilerplate.ejs")%>
+<%if(req.flash("success")){%>
+<div class="flash"><%=req.flash("success")%></div>
+<%}%>
+
+<div class="products">
+
+
+<%for (product of products){%>
+
+<div class="product">
+     <a href="product/<%=product._id%>">
+  <img src="<%=product.images[0].url%>" class="product-image" alt="<%=product.images[0].title%>">
+  </a>
+
+  <div class="product-body">
+    <a href="product/<%=product._id%>">
+    <p class="product-text"><%=product.description%></p>
+    </a>
+  </div>
+</div>
+<%}%>
+
+</div>

@@ -1,0 +1,43 @@
+.loginForm{
+    width: 30vw;
+    border: 2px solid #b0bec5;
+    border-radius: 4px;
+    form{
+        margin: 2vw;
+    }
+}
+
+.form-control:hover{
+    border-color: #71afed;
+}
+
+.outer_user_form{
+
+    
+    display: flex;
+    margin-top: 25vh;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.login_submit_button{
+
+    background-color: #b0bec5;
+    width: 100px;
+    border: 2px solid #263238;
+    border-radius: 5px;
+}
+
+.login_submit_button:hover{
+    width: 105px;
+    border-color: #7ec1e3;
+    background-color:#b0bec5;
+}
+
+@media(max-width :450px){
+
+    .loginForm{
+        width: 90vw;
+    }
+}

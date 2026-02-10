@@ -1,0 +1,65 @@
+<%layout("layouts/boilerplate.ejs")%>
+
+    <div class="outer">
+        <div class="upper">
+            <p class="description">
+                <%=product.description%>
+            </p>
+            <p class="name">
+                <%=product.name%>
+            </p>
+            <div class="image">
+                <img src="<%=product.images[0].url%>" alt="<%=product.images[0].title%>">
+            </div>
+
+        </div>
+        <div class="lower">
+            
+
+            <div class="info">
+                <div class="product_price">
+                    <h2>Price : <%=product.price.toLocaleString("en-IN")%>&#8377</h2>
+                </div>
+
+                <br>
+
+                <br>
+                <form>
+                    <span><b>Select Quantity :</b></span>
+                    <span><select name="quantity" id="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6(max)</option>
+                        </select></span>
+
+                        <br>
+                        <br>
+
+                    <input type="hidden" name="productId" value="<%=product._id%>">
+                    <div class="product_buttons">
+
+                        <div class="buy_button">
+                            <button formaction="/product/buy" formmethod="get">buy</button>
+                        </div>
+
+                        <br>
+                        <div class="cart_button">
+                            <button formaction="/user/cart/add" formmethod="post">add to cart</button>
+                        </div>
+
+
+
+                    </div>
+
+                    <!-- here we used two button and set different action action for both button -->
+
+
+                </form>
+            </div>
+
+
+        </div>
+    </div>

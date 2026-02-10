@@ -1,0 +1,45 @@
+<%layout("layouts/boilerplate.ejs")%>
+
+      <div class="signupForm">
+         <form action="/user/signup" method="post" id="signup_Form">
+
+
+            <div>
+               <div>
+                  <label for="name">Name :</label>
+               </div>
+
+               <input type="text" placeholder="Enter Your name" id="name" name="name" required>
+            </div>
+
+            <div>
+               <div>
+                  <label for="mobileNumber">Mobile Number :</label>
+               </div>
+
+               <input type="text" placeholder="Enter Your Mobile number" id="mobileNumber" name="userMobile" required>
+            </div> 
+
+             <div>
+               <div>
+                  <label for="email">E-mail :</label>
+               </div>
+
+               <input type="text" placeholder="Enter Your E-mail" id="emailr" name="email" required>
+            </div>
+
+            <div>
+               <div>
+                  <label for="password">Password :</label>
+               </div>
+               <input type="password" placeholder="Enter Strong password" id="password" name="password" required>
+            </div>
+
+            <br>
+            <div>
+               <button>SignUp</button>
+            </div>
+
+
+         </form>
+      </div>

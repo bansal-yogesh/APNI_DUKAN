@@ -1,0 +1,51 @@
+.navbar{
+    height: 100px;
+
+}
+#navbarNavDropdown{
+    z-index: 1;
+    text-align: end;
+    color: black;
+    background-color: #f7f7f7;
+}
+.navbar-brand::first-letter{
+    color: red;
+    font-size: 60px;
+    font-weight: 800;
+}
+.navbar-brand{
+color: black;
+font-size: 40px;
+font: 500;
+}
+
+
+@media(max-width :450px){
+
+    .navbar-brand::first-letter{
+    color: red;
+    font-size: 60px;
+    font-weight: 800;
+}
+.navbar-brand{
+color: black;
+font-size: 35px;
+font: 500;
+}
+
+}
+
+@media(max-width :350px){
+
+    .navbar-brand::first-letter{
+    color: red;
+    font-size: 50px;
+    font-weight: 700;
+}
+.navbar-brand{
+color: black;
+font-size: 30px;
+font-weight: 400;
+}
+
+}

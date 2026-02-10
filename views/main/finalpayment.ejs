@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/final.css">
+</head>
+<body>
+    <button id="rzp-button1">Pay</button>
+</body>
+</html>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "<%=key_id%>", // Enter the Key ID generated from the Dashboard
+    "amount": "<%=order.amount%>", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Apni_Dukan",
+    "image": "APNI_DUKAN",
+    "order_id": "<%=order.id%>", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+    "prefill": {
+        "name": "<%=req.user.name%>",
+        "email": "<%=req.user.email%>",
+        "contact": "<%=req.user.userMobile%>"
+    },
+     "handler": async function (response) {
+    try {
+        const result = await fetch("/payment/verify", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_signature: response.razorpay_signature,
+                createdorder: "<%= createdorder %>"
+            })
+        });
+        // console.log("before handler");
+// console.log(result);
+// console.log("successful");
+        const data = await result.json();
+        console.log("✅ Server responded:", data);
+        if(data.message == "success"){
+            window.location.href = "/payment/success/<%=createdorder%>";
+        }
+        else{
+            window.location.href = "/payment/failed";
+        }
+
+    } catch (error) {
+        console.error("❌ Error while verifying payment:", error);
+    }
+},
+
+    "notes": {
+        "address": "<%=order._id%>"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>

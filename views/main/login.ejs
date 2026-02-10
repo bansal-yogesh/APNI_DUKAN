@@ -1,0 +1,24 @@
+<% layout("layouts/boilerplate.ejs")-%>
+ 
+
+<div class="outer_user_form">
+<div id="loginForm" class="loginForm">
+
+<form action="/user/login" method="post" id="login_Form">
+  <div class="user_mobile">
+    <label for="userMobileNo" class="form-label" >Mobile No.</label>
+    <input type="text" class="form-control" id="userMobile" name="userMobile"  required>
+  </div>
+  <br>
+
+  <div class="user_password">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password" name="password" required>
+  </div>
+  <br>
+  
+
+  <button type="submit" class="login_submit_button">Login</button>
+</form>
+</div>
+</div>

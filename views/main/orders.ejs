@@ -1,0 +1,8 @@
+<% layout("layouts/boilerplate.ejs")-%>
+<%for(order of Order){%>
+<div id="order_block">
+<h1><%=order._id%></h1>
+<h2>Status : <%=order.status%></h2>
+</div>
+
+<%}%>
