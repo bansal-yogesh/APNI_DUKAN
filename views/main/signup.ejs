@@ -1,45 +1,47 @@
 <%layout("layouts/boilerplate.ejs")%>
 
-      <div class="signupForm">
+      <div class="outer_user_form">
+         <div id="loginForm" class="loginForm">
          <form action="/user/signup" method="post" id="signup_Form">
 
 
-            <div>
-               <div>
-                  <label for="name">Name :</label>
+            <div class="user_mobile">
+               <div >
+                  <label for="name" class="form-label">Name :</label>
                </div>
 
-               <input type="text" placeholder="Enter Your name" id="name" name="name" required>
+               <input type="text" placeholder="Enter Your name" class="form-control" id="name" name="name" required>
             </div>
 
             <div>
                <div>
-                  <label for="mobileNumber">Mobile Number :</label>
+                  <label for="mobileNumber" class="form-label">Mobile Number :</label>
                </div>
 
-               <input type="text" placeholder="Enter Your Mobile number" id="mobileNumber" name="userMobile" required>
+               <input type="text" placeholder="Enter Your Mobile number" class="form-control" id="mobileNumber" name="userMobile" required>
             </div> 
 
              <div>
                <div>
-                  <label for="email">E-mail :</label>
+                  <label for="email" class="form-label">E-mail :</label>
                </div>
 
-               <input type="text" placeholder="Enter Your E-mail" id="emailr" name="email" required>
+               <input type="text" placeholder="Enter Your E-mail" class="form-control" id="emailr" name="email" required>
             </div>
 
             <div>
                <div>
-                  <label for="password">Password :</label>
+                  <label for="password" class="form-label">Password :</label>
                </div>
-               <input type="password" placeholder="Enter Strong password" id="password" name="password" required>
+               <input type="password" placeholder="Enter Strong password" class="form-control" id="password" name="password" required>
             </div>
 
             <br>
             <div>
-               <button>SignUp</button>
+               <button class="login_submit_button">SignUp</button>
             </div>
 
 
          </form>
+         </div>
       </div>

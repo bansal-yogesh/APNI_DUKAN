@@ -8,6 +8,7 @@
     background-color: whitesmoke;
     border-radius: 2px;
     overflow: hidden;
+    padding : 0.3rem
 
 }
 .flash{
@@ -27,7 +28,7 @@
     .product-text {
         margin: auto;
         text-align: start;
-        
+        /* font-size : 0.8rem; */
 
     };
 
@@ -45,6 +46,8 @@
     flex-wrap: wrap;
     gap: 1rem;
    justify-content: space-evenly;
+   margin-left: 1rem;
+   margin-right: 1rem;
     /* display: grid;
     grid-template-rows: auto auto auto;
     grid-template-columns: auto auto auto auto auto;
@@ -52,9 +55,11 @@
     
 }
 
-/* @media(max-width :450px){
+@media(max-width :500px){
 
-    .products{
-        
+    .product{
+    height: 30vh;
+    width: 20vh;
+
     }
-} */
+}
