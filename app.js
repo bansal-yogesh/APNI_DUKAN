@@ -11,6 +11,8 @@ const Reviews = require("./models/reviews.js");
 const ejs = require("ejs");
 const engine = require('ejs-mate');
 const path = require("path");
+const dns = require('dns');
+dns.setServers(['8.8.8.8']);
 const flash = require('connect-flash');
 const { loginCheck, loginPresist } = require("./middelware.js");
 const Razorpay = require('razorpay');
@@ -80,6 +82,9 @@ app.get("/", async (req, res) => {
 
   const products = await Products.find();
   res.render("main/index.ejs", { products });
+})
+app.get("/policy",(req,res)=>{
+  res.sendFile(path.join(__dirname, 'public', 'Policy.pdf'));
 })
 
 app.get("/product/buy", loginCheck, (req, res) => {
