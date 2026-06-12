@@ -11,6 +11,12 @@
     padding : 0.3rem
 
 }
+.product:hover{
+    box-shadow: 2px 2px 10px rgb(167, 167, 178);
+}
+.product-body>a{
+    text-decoration: none;
+}
 .flash{
     border: 2px solid rgb(227, 144, 109);
     background-color: rgb(227, 144, 109);

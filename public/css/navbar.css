@@ -17,8 +17,14 @@
 color: black;
 font-size: 40px;
 font: 500;
+margin-left : 3vw;
+/* margin-right : 15vw; */
+
 }
 
+.nav-item{
+    margin-left: 40px;
+}
 
 @media(max-width :450px){
 

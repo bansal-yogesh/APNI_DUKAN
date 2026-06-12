@@ -18,6 +18,8 @@ const { loginCheck, loginPresist } = require("./middelware.js");
 const Razorpay = require('razorpay');
 const crypto = require("crypto");
 
+const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+
 const passport = require("passport");
 const passportLocal = require("passport-local");
 const session = require('express-session');
@@ -135,7 +137,62 @@ app.post("/user/cart/add", (req, res) => {
 
 app.get("/user/signup", (req, res) => {
   res.render("main/signup.ejs");
+  
 })
+
+app.get("/user/otp_verification_form", (req, res) => {
+  res.render("main/otp_verification_form.ejs");
+
+})
+app.post("/user/otp_verification_submit_form",async(req,res)=>{
+  const {userMobile} = req.body;
+
+  const user= await Users.findOne({"userMobile" : userMobile});
+  console.log(user);
+  if(user){
+
+client.verify.v2.services(process.env.TWILIO_VERIFY_SERVICE_SID)
+      .verifications
+      .create({to: `+91${userMobile}`, channel: 'sms'})
+      .then(verification => {console.log(verification.sid);
+ res.render("main/otp_verification_submit_form.ejs",{userMobile});
+      });
+ 
+  }
+  else{
+    res.redirect("/user/signup");
+  }
+  
+})
+
+// OTP verification route
+app.post("/user/otp_verification", async (req, res, next) => {
+  try {
+    const { userMobile, code } = req.body;
+
+    // Check OTP with Twilio
+    const check = await client.verify.v2.services(process.env.TWILIO_VERIFY_SERVICE_SID)
+      .verificationChecks
+      .create({ to: `+91${userMobile}`, code });
+
+    if (check.status === "approved") {
+      // Find or create user in DB
+      let user = await Users.findOne({"userMobile" : userMobile});
+      
+      // Passport login
+      req.login(user, (err) => {
+        if (err) return next(err);
+        return res.redirect("/");
+      });
+    } else {
+      res.status(401).json({ success: false, message: "Invalid OTP" });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+
 
 
 app.post("/user/signup", async (req, res) => {
