@@ -1,57 +1,59 @@
-<%layout("layouts/boilerplate.ejs")%>
+<% layout("layouts/boilerplate.ejs") %>
 
-    <div class="summary-outer">
-        <div class="order-summary-heading">
-            <h1>Order Summary</h1>
-        </div>
+<div class="summary-outer">
+  <div class="order-summary-heading">
+    <h1>Order Summary</h1>
+  </div>
 
-        <div class="product-details">
-        <div class="order-name"> 
-            <h3><%=productById.name%></h3>
-        
-        </div>
 
-        <div class="product-image">
-            <img src="<%=productById.images[0].url%>" alt="<%=productById.images[0].title%>">
-        </div>
 
-        <div class="order-description">
-            <h5>
-                <%=productById.description%>
-            </h5>
-        </div>
-        <div>
-            <p>Category :<%=productById.category%></p>
-
-            <p>Price For 1 : <%=productById.price%></p>
-        </div>
-
-        </div>
-
-        <div class="biling-information">
-
-            <div class="billing-inner">
-
-                <p>Item Price : <%=productById.price%></p>
-                <p>Quantity selected : <%=quantity%></p>
-                <p>Tax : <%0%></p>
-                <h2>Order Total <%=(productById.price * quantity).toLocaleString("en-IN")%>&#8377</h2>
-            </div>
-        </div>
-
-        <div class="delivery-address">
-            <p><%=deliveryAddress.name%></p>
-            <p><%=deliveryAddress.mobileNumber%></p>
-        </div>
+  <div class="product-details">
+    <div class="order-name"> 
+      <h3><%= productById.name %></h3>
     </div>
+    <div class="product-image">
+      <img src="<%= productById.images[0].url %>" alt="<%= productById.images[0].title %>">
+    </div>
+    <div class="order-description">
+      <h5><%= productById.description %></h5>
+    </div>
+    <br>
+    <div>
+      <p><b> <%= (productById.category.toUpperCase()) %> </b> </p>
+      <p><b>Price For 1:</b> ₹<%= productById.price %></p>
+      <p class="originalPrice"> <b>Original Price :</b> <%=(((productById.price)/100)*123).toLocaleString("en-IN")%></p>
+                    <p class="discount"><span><b>Original Price :</b> <b><%=(((productById.price)/100)*123).toLocaleString("en-IN")%> </b></span> - <b><%=(((productById.price)/100)*23).toLocaleString("en-IN")%> </b></p>
+                    <p class="discount"> <b>23% Discount</b></p>
+    </div>
+  </div>
 
-    <form action="/payment" method="post">
-        <input type="hidden" name="productId" value="<%=productById._id%>">
-        <input type="hidden" name="quantity" value="<%=quantity%>">
-        <input type="hidden" name="addressId" value="<%=deliveryAddress._id%>">
+ 
+  <div class="biling-information">
+    <div class="billing-inner">
+      <p>Item Price: ₹<%= productById.price %></p>
+      <p>Quantity Selected: <%= quantity %></p>
+      <p>Tax: 0%</p>
+      
 
-        <button>Payment</button>
-    </form>
+<h2>Total Price : ₹<%= (((productById.price * quantity)/100)*123).toLocaleString("en-IN") %></h2>
+<h2>Total Discount Availed : ₹<%= (((productById.price * quantity)/100)*23).toLocaleString("en-IN") %></h2>
+<p class="discount"> <b>23% Discount</b></p>
+<h2>Order Total: ₹<%= (productById.price * quantity).toLocaleString("en-IN") %></h2>
+    </div>
+  </div>
 
+ 
+  <div class="delivery-address">
+    <h4>Delivery Address</h4>
+    <p><%= deliveryAddress.name %></p>
+    <p><%= deliveryAddress.mobileNumber %></p>
+    <p><%= deliveryAddress.houseNumber %>, <%= deliveryAddress.city %> - <%= deliveryAddress.pincode %></p>
+  </div>
+</div>
 
-    
+<form action="/payment" method="post">
+  <input type="hidden" name="productId" value="<%= productById._id %>">
+  <input type="hidden" name="quantity" value="<%= quantity %>">
+  <input type="hidden" name="addressId" value="<%= deliveryAddress._id %>">
+  <button>Proceed to Payment</button>
+</form>

@@ -1,8 +1,24 @@
 <% layout("layouts/boilerplate.ejs")-%>
-<%for(order of Order){%>
-<div id="order_block">
-<h1><%=order._id%></h1>
-<h2>Status : <%=order.status%></h2>
+
+<div class="orders-page">
+  <h1 class="orders-title">My Orders</h1>
+
+  <% if (Order.length > 0) { %>
+    <% for (let order of Order) { %>
+      <div class="order-block">
+        <h2>Order ID: <%= order._id %></h2>
+        <p><strong>Status:</strong> <%= order.status.toUpperCase() %></p>
+        <p><strong>Total Amount:</strong> ₹<%= order.totalAmount %></p>
+        <p><strong>Placed On:</strong> <%= order.createdAt.toLocaleString("en-IN") %></p>
+        <p><strong>Payment ID:</strong> <%= order.paymentId %></p>
+
+        <a href="/orders/<%= order._id %>" class="btn btn-primary btn-sm mt-2">
+          View Details
+        </a>
+      </div>
+    <% } %>
+  <% } else { %>
+    <p class="no-orders">You have not placed any orders yet.</p>
+  <% } %>
 </div>
 
-<%}%>

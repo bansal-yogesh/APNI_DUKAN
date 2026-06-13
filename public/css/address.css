@@ -1,0 +1,68 @@
+/* Address Selection Styling */
+.address-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.address-option {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.address-option:hover {
+  border-color: #007bff;
+  background-color: #f1f9ff;
+}
+
+.address-option input[type="radio"] {
+  margin-right: 10px;
+}
+
+.address-option div {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+}
+.address_selected:checked{
+.address-option{
+    background-color: #7eb4ee;
+}
+}
+
+.address-option-selected {
+  border-color: #007bff;
+  background-color: #e9f3ff;
+}
+
+.address-section button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.address-section button:hover {
+  background-color: #0056b3;
+}
+
+.address-section a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.address-section a:hover {
+  text-decoration: underline;
+}

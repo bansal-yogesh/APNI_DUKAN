@@ -1,4 +1,4 @@
-<% layout("layouts/boilerplate.ejs")-%>
+<!-- <% layout("layouts/boilerplate.ejs")-%>
  
 
 <div class="outer_user_form">
@@ -23,4 +23,26 @@
 
 </form>
 </div>
+</div> -->
+
+<% layout("layouts/boilerplate.ejs")-%>
+
+<div class="outer_user_form">
+  <div id="loginForm" class="loginForm">
+    <h1>Login</h1>
+    <form action="/user/login" method="post" id="login_Form">
+      <div class="user_mobile">
+        <label for="userMobileNo" class="form-label mb-2">Mobile No.</label>
+        <input type="text" class="form-control" id="userMobile" name="userMobile" required>
+      </div>
+
+      <div class="user_password">
+        <label for="password" class="form-label mb-2">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+
+      <button type="submit" class="login_submit_button">Login</button>
+      <a href="/user/otp_verification_form" id="otp_login">OTP Login</a>
+    </form>
+  </div>
 </div>

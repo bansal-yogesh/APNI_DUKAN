@@ -1,8 +1,15 @@
-<%layout("layouts/boilerplate.ejs")%>
+<% layout("layouts/boilerplate.ejs") %>
 
-<h1>Order successfully Placed</h1>
+<div class="success-page">
+  <div class="success-box">
+    <h1 class="success-title">🎉 Order Successfully Placed</h1>
 
-<h2>Order ID : <%=order._id%></h2>
-<h2>Total Amount Paid :<%=order.totalAmount%> </h2>
-<h2>Payment ID : <%=order.paymentId%></h2>
-a
+    <div class="success-details">
+      <p><strong>Order ID:</strong> <%= order._id %></p>
+      <p><strong>Total Amount Paid:</strong> ₹<%= order.totalAmount %></p>
+      <p><strong>Payment ID:</strong> <%= order.paymentId %></p>
+    </div>
+
+    <a href="/" class="btn btn-primary mt-3">Continue Shopping</a>
+  </div>
+</div>
