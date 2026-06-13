@@ -18,7 +18,10 @@
 
             <div class="info">
                 <div class="product_price">
-                    <h2>Price : <%=product.price.toLocaleString("en-IN")%>&#8377</h2>
+                    <h6>Price : <%=product.price.toLocaleString("en-IN")%>&#8377</h6>
+                    <p class="originalPrice"> <b>Original Price :</b> <%=(((product.price)/100)*123).toLocaleString("en-IN")%></p>
+                    <p class="discount"><span><b>Original Price :</b> <b><%=(((product.price)/100)*123).toLocaleString("en-IN")%> </b></span> - <b><%=(((product.price)/100)*23).toLocaleString("en-IN")%> </b></p>
+                    <p class="discount"> <b>23% Discount</b></p>
                 </div>
 
                 <br>
@@ -42,12 +45,12 @@
                     <div class="product_buttons">
 
                         <div class="buy_button">
-                            <button formaction="/product/buy" formmethod="get">buy</button>
+                            <button formaction="/product/buy" formmethod="get">Buy</button>
                         </div>
 
                         <br>
                         <div class="cart_button">
-                            <button formaction="/user/cart/add" formmethod="post">add to cart</button>
+                            <button formaction="/user/cart/add" formmethod="post">Add to Cart</button>
                         </div>
 
 

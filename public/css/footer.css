@@ -1,0 +1,5 @@
+.navbar-brand::first-letter{
+    color: red;
+    font-size: 60px;
+    font-weight: 800;
+}

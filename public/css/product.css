@@ -1,16 +1,41 @@
 img{
     height: 60vh;
     width: 40vw;
-}
-.info{
-     height: 40vh;
-        width: 30vw;
+    border: 2px solid black;
+    border-radius: 10%;
 }
 
+.discount>span{
+    color: red;
+    text-decoration: line-through;
+}
+.discount>b{
+    color: green;
+    
+}
+
+.description{
+    color: black;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 3vh;
+}
+.name{
+    color: rgb(59, 58, 58);
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 2vh;
+}
+.outer{
+    padding-left: 10vw;
+    padding-top: 5vh;
+    padding-right:10vw;
+    padding-bottom: 10vh;;
+}
 .buy_button>button{
     background-color: #B0BEC5;
     height: 40px;
-    width: 70%;
+    width: 90%;
     border: 1px solid #f7f7f7;
     border-radius: 10px;
 }
@@ -18,7 +43,7 @@ img{
 .cart_button>button{
     background-color: #455a64;
     height: 40px;
-    width: 70%;
+    width: 90%;
     border: 1px solid #f7f7f7;
     border-radius: 10px;
 
@@ -27,19 +52,29 @@ img{
     margin: 0px auto 0px;
 }
 
+.originalPrice{
+    width: 100%;
+font-size: 1rem;
+b{
+    color: red;
+}
+}
+
 .lower{
     margin-top: 20px;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    margin-top: 5vh;
+    padding: 10%;
 }
 
 @media(max-width :450px){
 
     img{
-        height: 60vh;
-    width: 100vw;
+        height: 40vh;
+    width: 80vw;
     }
 }
 
