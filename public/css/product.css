@@ -34,7 +34,7 @@ img{
 }
 .buy_button>button{
     background-color: #B0BEC5;
-    height: 40px;
+    height: 45px;
     width: 90%;
     border: 1px solid #f7f7f7;
     border-radius: 10px;
@@ -42,7 +42,7 @@ img{
 
 .cart_button>button{
     background-color: #455a64;
-    height: 40px;
+    height: 45px;
     width: 90%;
     border: 1px solid #f7f7f7;
     border-radius: 10px;
@@ -66,8 +66,11 @@ b{
     flex-direction: column;
     justify-content: center;
     align-items: center; */
-    margin-top: 5vh;
+    margin-top: 17vh;
     padding: 10%;
+}
+.lower:hover{
+    box-shadow: 2px 2px 20px rgb(219, 213, 213);
 }
 
 @media(max-width :450px){
