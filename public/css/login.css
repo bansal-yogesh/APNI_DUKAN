@@ -1,5 +1,5 @@
 .loginForm{
-    /* background-color: rgb(242, 244, 246); */
+    background-color: rgb(242, 244, 246);
     width: 30vw;
     border: 2px solid #b0bec5;
     border-radius: 4px;
@@ -7,19 +7,25 @@
         margin: 2vw;
     }
 }
+
+.loginForm:hover{
+    box-shadow: 2px 2px 10px black;
+}
 /* body{
-    background-color: antiquewhite;
+    background-color: rgb(244, 240, 235);
 } */
 
 .form-control:hover{
     border-color: #71afed;
 }
 
+
 .outer_user_form{
 
     
     display: flex;
     margin-top: 25vh;
+    margin-bottom: 35vh;
     justify-content: center;
     align-items: center;
 }

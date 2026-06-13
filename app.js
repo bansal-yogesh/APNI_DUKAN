@@ -34,7 +34,6 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -88,6 +87,28 @@ app.get("/", async (req, res) => {
 app.get("/policy",(req,res)=>{
   res.sendFile(path.join(__dirname, 'public', 'Policy.pdf'));
 })
+
+app.get("/contact", (req, res) => {
+  res.render("main/contact.ejs", { title: "Contact Us" });
+});
+
+app.post("/contact", (req, res) => {
+  const { name, email, message } = req.body;
+  // TODO: Save to DB or send email
+  console.log("Contact form submitted:", name, email, message);
+  res.redirect("main/contact.ejs");
+});
+
+// Pricing route
+app.get("/pricing",(req,res)=>{
+  res.render("main/pricing.ejs", { title: "Pricing - Apni Dukan" });
+})
+
+// features route
+app.get("/features", (req, res) => {
+  res.render("main/features.ejs", { title: "Features - Apni Dukan" });
+});
+
 
 app.get("/product/buy", loginCheck, (req, res) => {
   const { productId, quantity } = req.query;
@@ -364,6 +385,9 @@ app.get("/user/orders",async (req,res)=>{
   console.log(Order);
   res.render("main/orders.ejs",{Order});
 })
+
+
+
 // app listing
 app.listen(port, () => {
   console.log(`listing port${port}`);

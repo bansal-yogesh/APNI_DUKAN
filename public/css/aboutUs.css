@@ -1,0 +1,41 @@
+/* About Us Page Styling */
+.about-us {
+  background-color: #fbfbfb;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.about-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e74c3c;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.about-us h3 {
+  font-size: 1.4rem;
+  color: #444;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.about-us p, .about-us li {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.about-us ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.brand-text::first-letter {
+  color: #e74c3c;
+  font-size: 2rem;
+  font-weight: 800;
+}

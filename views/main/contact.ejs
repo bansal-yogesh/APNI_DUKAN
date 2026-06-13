@@ -1,0 +1,44 @@
+<%layout("layouts/boilerplate.ejs")%>
+
+<div class="container contact-page mt-5 mb-5">
+    <h2 class="contact-title text-center">Contact Us</h2>
+    <p class="text-center text-muted mb-5">
+      Have questions or need help? Fill out the form below or reach us directly.
+    </p>
+
+    <div class="row">
+      <!-- Contact Form -->
+      <div class="col-md-6">
+        <form action="/contact" method="POST" class="contact-form">
+          <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Your Email</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+       <div class="col-md-2"></div>
+      <div class="col-md-4 contact-info mt-5">
+        <h4>Reach Us</h4>
+        <p>📞 +91-8053716716</p>
+        <p>✉ support@apnidukan.com</p>
+        <p>📍 Hisar, Haryana, India</p>
+
+        <h4 class="mt-4">Follow Us</h4>
+        <a href="https://wa.me/8053716716" target="_blank"><i class="fa-brands fa-whatsapp fa-lg me-3"></i></a>
+        <a href="https://www.instagram.com/its.bansal_yogesh" target="_blank"><i class="fa-brands fa-instagram fa-lg me-3"></i></a>
+        <a href="https://t.me/bansal_yogesh" target="_blank"><i class="fa-brands fa-telegram fa-lg me-3"></i></a>
+        <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube fa-lg"></i></a>
+      </div>
+    </div>
+  </div>

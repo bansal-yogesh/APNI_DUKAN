@@ -1,0 +1,22 @@
+/* Pricing Page Styling */
+.pricing-page h2 {
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.pricing-page .card {
+  border-radius: 8px;
+}
+
+.pricing-page .card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.pricing-page .card-text {
+  font-size: 1.2rem;
+  color: #007bff;
+  margin-bottom: 15px;
+}

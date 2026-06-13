@@ -1,5 +1,16 @@
-.navbar-brand::first-letter{
+.brand::first-letter{
     color: red;
     font-size: 60px;
     font-weight: 800;
 }
+.brand>a{
+    text-decoration: none;
+    font-size: 30px;
+    color: black;
+    font-weight: 500;
+}
+
+/* .margin{
+    margin-top: 30vh !important;
+
+} */
