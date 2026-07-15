@@ -80,6 +80,8 @@ app.use((req, res, next) => {
 app.use((req,res,next)=>{
   res.locals.error = req.flash('error');
   res.locals.success = req.flash('success');
+  console.log(res.locals.error);
+  console.log(res.locals.success);
   next();
 })
   // all routs
@@ -139,6 +141,11 @@ app.post("/product/:productId/buy", async (req, res) => {
   let { quantity, selectedAddress } = req.body;
   // selectedAddress = JSON.parse(selectedAddress);
   let { productId } = req.params;
+  console.log(selectedAddress);
+  if(selectedAddress == undefined){
+    req.flash("error", "Please select address. If not listed then Click On Add Address Button ! Thank You");
+    res.redirect(`/product/buy?productId=${productId}&quantity=${quantity}`);
+  }
 
   console.log(quantity, productId);
   console.log(selectedAddress);
@@ -240,11 +247,11 @@ app.post("/user/signup", async (req, res) => {
 
     req.login(user, (err) => {
       if (err) {
-        req.flash('error', 'Login !');
+        req.flash('error', 'Login Please !');
         res.redirect("/user/login");
       }
       else{
-        req.flash('success', 'Registerd Successfully & Loged In ');
+        req.flash('success', 'Congratulation : Registerd Successfully & Loged In ');
       res.redirect("/");
       }
     })
@@ -285,7 +292,7 @@ app.get("/user/new-address", (req, res) => {
 app.get("/user/logout", (req, res) => {
   req.logout((err) => {
     if (err) {
-      req.flash('error', 'Logout Failed ! Logout again');
+      req.flash('error', 'Sorry - Logout Failed ! Logout again');
       res.redirect("/")
     }
     req.flash('success', 'Successfully Loged out - Thank You visit again ! ');
@@ -301,9 +308,18 @@ app.post("/user/new-address", async (req, res) => {
   console.log(productId,quantity);
   let userid = req.user._id;
   console.log(userid);
-  await Users.findByIdAndUpdate(userid, { $push: { address: newAddress } });
-  res.redirect(`/product/buy?productId=${productId}&quantity=${quantity}`);
+  // await Users.findByIdAndUpdate(userid, { $push: { address: newAddress } });
+  try{
 
+  const user = await Users.findById(userid);
+user.address.push(newAddress);
+await user.save();
+  res.redirect(`/product/buy?productId=${productId}&quantity=${quantity}`);
+  }
+  catch(error){
+    req.flash("error", `Address shold contain valid data : ${error.message}`);
+    res.redirect("/user/new-address?productId=productId&quantity=quantity");
+  }
 })
 
 app.post("/payment", async (req, res) => {

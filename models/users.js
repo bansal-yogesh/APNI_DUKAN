@@ -29,14 +29,14 @@ const userSchema = new mongoose.Schema({
                 required: true,
             },
             mobileNumber: {
-                type: Number,
+               type: String,
                 required: true,
-                
+                match: [/^\d{10}$/, 'Must be a valid 10-digit number'],
             },
             city : String,
             pincode :{
-                type : Number,
-                
+                type : String,
+                match: [/^[1-9]{1}[0-9]{5}$/, 'Must be a valid 6-digit number'],
             },
             houseNumber : String,
         }

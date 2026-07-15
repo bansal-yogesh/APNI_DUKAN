@@ -3,7 +3,7 @@
   <form action="/product/<%=productId%>/buy" method="post">
     <% for(address of req.user.address){ %>
       <label class="address-option">
-        <input type="radio" name="selectedAddress" value="<%=address._id%>" class="address_selected">
+        <input type="radio" name="selectedAddress" value="<%=address._id%>" class="address_selected" required>
         <div>
           <b><%=address.name%></b> — <%=address.mobileNumber%><br>
           <%=address.houseNumber%>, <%=address.city%> - <%=address.pincode%>
