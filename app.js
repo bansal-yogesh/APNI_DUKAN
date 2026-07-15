@@ -263,12 +263,14 @@ app.get("/user/login", (req, res) => {
   res.render("main/login.ejs");
 })
 
-app.post("/user/login", loginPresist, passport.authenticate("local", { failureRedirect: "/user/login" }), (req, res) => {
-  req.flash("success", "login successfull");
+app.post("/user/login", loginPresist, passport.authenticate("local", { failureRedirect: "/user/login",failureFlash: true }), (req, res) => {
+  
   if (res.locals.targetUrl) {
+    req.flash("success", "Thank You - login successfull !");
     res.redirect(res.locals.targetUrl);
   }
   else {
+    req.flash("success", "Thank You - login successfull !");
     res.redirect("/");
   }
 
@@ -283,8 +285,10 @@ app.get("/user/new-address", (req, res) => {
 app.get("/user/logout", (req, res) => {
   req.logout((err) => {
     if (err) {
+      req.flash('error', 'Logout Failed ! Logout again');
       res.redirect("/")
     }
+    req.flash('success', 'Successfully Loged out - Thank You visit again ! ');
     res.redirect("/");
   })
 });
