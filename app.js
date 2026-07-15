@@ -77,7 +77,12 @@ app.use((req, res, next) => {
   next();
 })
 
-//   all routs
+app.use((req,res,next)=>{
+  res.locals.error = req.flash('error');
+  res.locals.success = req.flash('success');
+  next();
+})
+  // all routs
 
 app.get("/", async (req, res) => {
 
@@ -171,16 +176,23 @@ app.post("/user/otp_verification_submit_form",async(req,res)=>{
   const user= await Users.findOne({"userMobile" : userMobile});
   console.log(user);
   if(user){
-
+    try{
 client.verify.v2.services(process.env.TWILIO_VERIFY_SERVICE_SID)
       .verifications
       .create({to: `+91${userMobile}`, channel: 'sms'})
       .then(verification => {console.log(verification.sid);
+        req.flash('success', 'OTP sent Successfully');
+        res.locals.success = req.flash('success');
  res.render("main/otp_verification_submit_form.ejs",{userMobile});
       });
- 
+    }
+    catch(error){
+      next(error);
+    } 
   }
   else{
+    req.flash('error', 'No user found with this Mobile No. ! Please Signup First');
+    console.log("no user found ");
     res.redirect("/user/signup");
   }
   
@@ -206,7 +218,8 @@ app.post("/user/otp_verification", async (req, res, next) => {
         return res.redirect("/");
       });
     } else {
-      res.status(401).json({ success: false, message: "Invalid OTP" });
+      req.flash("error","Invalid OTP send again !");
+    res.redirect("/user/otp_verification_form");
     }
   } catch (err) {
     next(err);
@@ -227,14 +240,20 @@ app.post("/user/signup", async (req, res) => {
 
     req.login(user, (err) => {
       if (err) {
-        console.log(err.message);
+        req.flash('error', 'Login !');
+        res.redirect("/user/login");
       }
+      else{
+        req.flash('success', 'Registerd Successfully & Loged In ');
       res.redirect("/");
+      }
     })
 
   }
   catch (error) {
     console.log(error.message);
+    let err = `Registration Failed ! Register Again - ${error.message}`;
+    req.flash('error', err);
     res.redirect("/user/signup");
   }
 
@@ -321,7 +340,7 @@ app.post("/payment", async (req, res) => {
   });
 
   var options = {
-    amount: quantity * productById.price * 100,  // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    amount: quantity * productById.price * 100,  // Amount is in currency subunits.
     currency: "INR",
     receipt: createdOrder._id
   };

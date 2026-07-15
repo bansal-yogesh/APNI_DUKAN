@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/orders.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/contact.css">
+     <link rel="stylesheet" href="/css/boilerplate.css">
     <link rel="stylesheet" href="/css/pricing.css">
     <link rel="stylesheet" href="/css/features.css">
     <link rel="stylesheet" href="/css/address.css">
@@ -28,6 +29,14 @@
         <%-include("../includes/navbar.ejs")%>
     </header>
     <main>
+
+        <div>
+   <% if (error && error.length > 0) { %>
+      <p class="error"><%=error[0]%></p>
+      <%}if (success && success.length > 0){%>
+        <p class="success"><%=success[0]%></p>
+        <%}%>
+</div>
       <%-body%>  
     </main>
     <footer>

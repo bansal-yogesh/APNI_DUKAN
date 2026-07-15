@@ -83,7 +83,7 @@ b{
 
 @media(min-width :450px){
     .lower{
-        height: 60vh;
+        height: 63vh;
         width: 40vw;
         border: 2px solid rgb(250, 248, 248);
         background-color: rgb(250, 251, 253);
