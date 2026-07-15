@@ -417,7 +417,7 @@ app.get("/payment/success/:createdorder", async(req, res) => {
   res.render("main/success.ejs",{order});
 })
 
-app.get("/user/orders",async (req,res)=>{
+app.get("/user/orders",loginCheck,async (req,res)=>{
   let userId = req.user._id;
   console.log(userId);
   let Order = await Orders.find({user : userId});
