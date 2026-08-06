@@ -183,7 +183,7 @@ app.post("/user/otp_verification_submit_form",async(req,res)=>{
   const user= await Users.findOne({"userMobile" : userMobile});
   console.log(user);
   if(user){
-    try{
+
 client.verify.v2.services(process.env.TWILIO_VERIFY_SERVICE_SID)
       .verifications
       .create({to: `+91${userMobile}`, channel: 'sms'})
@@ -191,11 +191,12 @@ client.verify.v2.services(process.env.TWILIO_VERIFY_SERVICE_SID)
         req.flash('success', 'OTP sent Successfully');
         res.locals.success = req.flash('success');
  res.render("main/otp_verification_submit_form.ejs",{userMobile});
-      });
-    }
-    catch(error){
-      next(error);
-    } 
+      }).catch((error)=>{
+      console.log("---------------------------------------------------------------");
+      console.log(error);
+      req.flash('error',`Error: The phone number is unverified. Trial accounts cannot send messages to unverified numbers Try using password Please!`);
+      res.redirect("/user/login");
+      })
   }
   else{
     req.flash('error', 'No user found with this Mobile No. ! Please Signup First');
